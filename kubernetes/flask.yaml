@@ -5,7 +5,11 @@ metadata:
   labels: 
     app: flask
 spec:
-  replicas: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 20%
+      maxUnavailable: 20%
+  replicas: 50
   selector:
     matchLabels:
       app: flask
@@ -17,6 +21,7 @@ spec:
       containers:
       - name: flask-container
         image: stratcastor/duo-flask:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5500
 ---
