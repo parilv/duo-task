@@ -9,7 +9,7 @@ spec:
     rollingUpdate:
       maxSurge: 20%
       maxUnavailable: 20%
-  replicas: 50
+  replicas: 10
   selector:
     matchLabels:
       app: flask
