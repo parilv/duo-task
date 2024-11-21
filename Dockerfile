@@ -5,7 +5,7 @@ COPY . .
 # Install pip dependencies from requirements
 RUN pip install -r "requirements.txt"
 # Set YOUR_NAME environment variable
-ENV YOUR_NAME="Lord Sidous"
+ENV YOUR_NAME="Lord Yoda"
 # Expose the correct port
 EXPOSE 5500
 # Create an entrypoint
