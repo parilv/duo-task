@@ -27,7 +27,7 @@ pipeline {
                         '''
                     } else if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''
-                        docker build -t parilvadher/duo-jenk:latest -t parilvadher/duo-jenk-dev:v${BUILD_NUMBER} .
+                        docker build -t parilvadher/duo-jenk-dev:latest -t parilvadher/duo-jenk-dev:v${BUILD_NUMBER} .
                         '''
                     }
                 }
@@ -44,6 +44,7 @@ pipeline {
                         '''
                     } else if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''                        
+                        docker push parilvadher/duo-jenk-dev:latest
                         docker push parilvadher/duo-jenk-dev:v${BUILD_NUMBER}
                         '''
                     } else {
