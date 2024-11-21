@@ -27,7 +27,7 @@ pipeline {
                         '''
                     } else if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''
-                        docker build -t parilvadher/duo-jenk:latest -t parilvadher/duo-jenk:v${BUILD_NUMBER} .
+                        docker build -t parilvadher/duo-jenk:latest -t parilvadher/duo-jenk-dev:v${BUILD_NUMBER} .
                         '''
                     }
                 }
@@ -44,8 +44,8 @@ pipeline {
                         '''
                     } else if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''
-                        docker push parilvadher/duo-jenk:latest
-                        docker push parilvadher/duo-jenk:v${BUILD_NUMBER}
+                        docker push parilvadher/duo-jenk-dev:latest
+                        docker push parilvadher/duo-jenk-dev:v${BUILD_NUMBER}
                         '''
                     } else {
                         sh'echo "Unknown branch"'
@@ -64,7 +64,7 @@ pipeline {
                     } else if (env.GIT_BRANCH == 'origin/dev') {
                         sh'''
                         kubectl apply -f ./kubernetes -n development
-                        kubectl set image deployment/flask-deployment flask-container=parilvadher/duo-jenk:v${BUILD_NUMBER} -n development
+                        kubectl set image deployment/flask-deployment flask-container=parilvadher/duo-jenk-dev:v${BUILD_NUMBER} -n development
                         '''
                     } else {
                         sh'echo "Unknown branch"'
