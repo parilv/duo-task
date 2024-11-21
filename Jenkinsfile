@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+                echo "hello world"
                 docker build -t parilvadher/duo-jenk:latest -t parilvadher/duo-jenk:v${BUILD_NUMBER} .
                 '''
             }
